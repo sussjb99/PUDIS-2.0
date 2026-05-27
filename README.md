@@ -58,10 +58,10 @@ Displays detailed information about the currently mounted drive:
 Validates whether the drive’s reported capacity matches its actual usable capacity. This helps detect counterfeit or defective flash drives that silently discard data once their true limit is exceeded.
 
 During a **Full Surface Scan**, the suite writes controlled test files across free space and reads them back to verify:
-- All regions of the drive are real and readable[cite: 3]
-- No hidden capacity limits[cite: 3]
-- No controller failures[cite: 3]
-- No unstable regions under load[cite: 3]
+- All regions of the drive are real and readable
+- No hidden capacity limits
+- No controller failures
+- No unstable regions under load
 
 ### 🧬 File Integrity (Bit‑Rot Detection)
 The suite maintains a cryptographic baseline of all files, including:
@@ -101,7 +101,7 @@ If PAR2 recovery data exists, the suite can automatically repair corrupted files
 
 To build from source:
 1. Clone this repository.
-2. Ensure you have a C++ compiler and the PowerShell Core environment set up.
+2. Ensure you have a C++ compiler similar to "Microsoft (R) C/C++ Optimizing Compiler Version 19.50.35730 for x64"
 3. Review the scripts in `Integrity_Check/scripts/` to understand the execution flow.
 4. Review `manifest.md` to ensure your compiled binaries match the expected project structure.
 
