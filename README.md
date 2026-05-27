@@ -48,11 +48,11 @@ Every contribution helps fund testing hardware, new features, and the procuremen
 ### 🔍 Device Information
 Displays detailed information about the currently mounted drive:
 - Device model
-- Hardware serial number[cite: 3]
-- Drive letter[cite: 3]
-- Filesystem type (FAT32, exFAT, NTFS, etc.)[cite: 3]
-- Storage technology (Flash, HDD, SSD, SD)[cite: 3]
-- SMART health (if supported)[cite: 3]
+- Hardware serial number
+- Drive letter
+- Filesystem type (FAT32, exFAT, NTFS, etc.)
+- Storage technology (Flash, HDD, SSD, SD)
+- SMART health (if supported)
 
 ### 📦 Capacity Validation
 Validates whether the drive’s reported capacity matches its actual usable capacity. This helps detect counterfeit or defective flash drives that silently discard data once their true limit is exceeded.
