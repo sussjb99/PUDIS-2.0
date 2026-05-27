@@ -16,10 +16,14 @@ This software was written in C++
 
 ## 🛡️ Security & Integrity
 
-- To effectively retrieving information from SMART Enabled USB Devices, this software requires Elevated Admin Permissons.
-- However, standard USB Flash drive do not require these permissions. 
-- Permission requirements can be ajusted via  the config.ini setting [Permissions] RequireAdmin.  
-  A value of 1 will turn the permission requiredment to ON. 
+- To retrieve SMART data from USB devices that support it, this software requires elevated administrator permissions.
+- Standard USB flash drives do not provide SMART data, so they do not require elevation.
+- Permission requirements are controlled through the config.ini setting:
+```ini
+[Permissions]
+RequireAdmin=1
+```
+
 
 To ensure your safety and maintain full transparency:
 - **Verified Hashes:** Every binary and script in this suite is documented in the [manifest.md](./manifest.md) file with its corresponding **SHA-256 hash**.
