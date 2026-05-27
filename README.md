@@ -1,14 +1,14 @@
 # PUDIS-2.0
 PUDIS 2.0 (Portable USB Drive Integrity Suite)
 
-PUDIS (Portable-USB-Drive-Integrity-Suite) is a maintenance and monitoring toolkit designed to keep external storage devices healthy over long periods of time. It performs two major categories of checks:
+PUDIS (Portable-USB-Drive-Integrity-Suite) is a maintenance and monitoring toolkit designed to keep external storage devices healthy over long periods of time. It performs two major categories of tasks:
 
 - **File Integrity (Bit‑Rot Detection)**
 - **Surface Analysis (Performance & Stability Scans)**
 
-The suite is designed to work with USB flash drives, portable HDDs/SSDs, and other removable storage devices. It never modifies files unless you explicitly choose to run a recovery procedure.
+The suite is designed to work with USB flash and portable exteranal HDDs/SSD devices. 
 
-This software is designed to be small in size and should be installed and run directly from external storage devices.
+This software is designed to be small in size and should be installed and run directly from the external storage devices.
 
 This software was written in C++
 
