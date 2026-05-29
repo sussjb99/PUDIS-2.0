@@ -95,19 +95,19 @@ If PAR2 recovery data exists, the suite can automatically repair corrupted files
 
 PUDIS automatically guides you through the required steps in the correct order.
 
-- **First‑time setup:**
+- **First‑time setup:** <br>
   Calibrate Hardware → Re‑Create Baseline → Re‑Generate Recovery → Bit‑Rot Detection
 
-- **Routine integrity checks:**
+- **Routine integrity checks:** <br>
   Run Bit‑Rot Detection to verify file integrity.
 
-- **Drive health maintenance:**
+- **Drive health maintenance:** <br>
   Perform a Quick Surface Scan monthly and a Full Surface Scan every 6 months.
 
-- **After adding, removing, or modifying files:**
+- **After adding, removing, or modifying files:** <br>
   Update the File Baseline and Re‑Generate Recovery Data.
    
-**Note** The software will automatically notify you if a required step has not yet been completed.
+**Note** <br> The software will automatically notify you if a required step has not yet been completed.
 
 ---
 
