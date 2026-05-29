@@ -83,8 +83,11 @@ If PAR2 recovery data exists, the suite can automatically repair corrupted files
 1. **Scan for Bit Rot:** Compares all files against the stored baseline.
 2. **Update File Baseline:** Creates or updates the integrity baseline.
 3. **Re‑Generate Recovery Data:** Creates or updates PAR2 recovery files.
-4. **Quick Surface Scan:** Fast stability and performance sampling.
-5. **Full Surface Scan:** Sequential read/write validation across all free space.
+4. **Calibrate:** Calibrates estimated times based on individual system performance metrics
+5. **Quick Surface Scan:** Fast stability and performance sampling.
+6. **Full Surface Scan:** Sequential read/write validation across all free space.
+7. **Generate Report** Useful for assessing health of device over time.
+8. **VIew Logs** Helpful for assessing technical issues.
 
 ---
 
