@@ -107,7 +107,7 @@ PUDIS automatically guides you through the required steps in the correct order.
 - **After adding, removing, or modifying files:** <br>
   Update the File Baseline and Re‑Generate Recovery Data.
    
-**Note** <br> The software will automatically notify you if a required step has not yet been completed.
+**Note**  The software will automatically notify you if a required step has not yet been completed.
 
 ---
 
