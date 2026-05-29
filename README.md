@@ -81,7 +81,7 @@ If PAR2 recovery data exists, the suite can automatically repair corrupted files
 ## Tasks Overview
 
 1. **Scan for Bit Rot:** Compares all files against the stored baseline.
-2. **Update File Baseline:** Creates or updates the integrity baseline.
+2. **Re-Create Baseline:** Creates or updates the integrity baseline.
 3. **Re‑Generate Recovery Data:** Creates or updates PAR2 recovery files.
 4. **Calibrate:** Calibrates estimated times based on individual system performance metrics
 5. **Quick Surface Scan:** Fast stability and performance sampling.
