@@ -16,9 +16,8 @@ This software was written in C++
 
 ## 🛡️ Security & Integrity
 
-- To retrieve SMART data from USB devices that support it, this software requires elevated administrator permissions.
-- Standard USB flash drives do not provide SMART data, so they do not require elevation.
-- Permission requirements are controlled through the config.ini setting:
+- To retrieve health data from USB devices that support SMART health technology, requires elevated administrator permissions. However, Standard USB flash drives do not provide SMART data, so they do not require elevation permissions.
+- This applicaitos permission requirements are controlled through the config.ini setting and can be adjusted to meet the specific required of the individual storaage devices.
 ```ini
 [Permissions]
 RequireAdmin=1
