@@ -1,2 +1,0 @@
-Location of local Scripts.
-Powershell script example provided to illustration global change of filenames.
