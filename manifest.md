@@ -1,8 +1,8 @@
-📦 PUDIS Installation Manifest
-This document describes all files included in the PUDIS distribution folder, including their purpose and SHA‑256 hash values.
+📦 PUDIS Installation Manifest <br>
+This document describes all files included in the PUDIS distribution folder. <br>
+It including their purpose, and SHA‑256 hash values.
 
-📁 Directory Tree
-
+📁 Directory Tree <br>
 ```text
 PUDIS/
 │   Drive_Status.xml
