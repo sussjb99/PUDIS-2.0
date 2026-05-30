@@ -87,25 +87,25 @@ PUDIS/
 | ``config.ini`` | Main configuration file controlling all PUDIS modules | ``---`` |
 | ``drivedb.txt`` | Drive database for SMART attribute interpretation | ``---`` |
 
-🔹 data/ - Data Repository
+🔹 data/ — Data Repository
 | File | Description | SHA‑256 |
 | --- | --- | --- |
 | ``logfiles.txt`` | Placeholder log file | ``---`` |
 
 
-🔹 logs/ - Log File Repository
+🔹 logs/ — Log File Repository
 | File | Description | SHA‑256 |
 | --- | --- | --- |
 | ``logfiles.txt`` | Placeholder log file | ``---`` |
 
 
-🔹 reports/ - Report File Repository
+🔹 reports/ — Report File Repository
 | File | Description | SHA‑256 |
 | --- | --- | --- |
 | ``reportfiles.txt`` | Placeholder report file | ``---`` |
 
 
-🔹 scripts/ -  Scripting File Repository
+🔹 scripts/ — Scripting File Repository
 | File | Description | SHA‑256 |
 | --- | --- | --- |
 | ``pshell.bat`` | Batch script wrapper for PowerShell execution | ``---`` |
