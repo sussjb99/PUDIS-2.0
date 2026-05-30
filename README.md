@@ -27,7 +27,7 @@ RequireAdmin=1
 To ensure safety and maintain full transparency:
 - **Verified Hashes:** All binaries in this suite are documented in the [manifest.md](./manifest.md) file with their corresponding **SHA-256 hash**.
 - **Self-Signed:** As this is an independent project currently in the funding phase, files are self-signed. You can manually verify the integrity of any file using the hashes provided in the manifest.
-- **Safety First:** The software is designed to identify and target removable drives. It will **never** perform a stress test on your system drive (C:).
+- **Safety First:** The software is designed to identify and target removable drives and is specifically designed **never** perform a stress testing  the system's main (C:) drive.
 
 ---
 
