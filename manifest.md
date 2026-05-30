@@ -1,4 +1,4 @@
-📦 PUDIS Installation Manifest <br>
+📦 **PUDIS Installation Manifest** <br>
 This document describes all files included in the PUDIS distribution folder. <br>
 It including their purpose, and SHA‑256 hash values.
 
