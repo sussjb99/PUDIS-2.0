@@ -113,6 +113,6 @@ PUDIS/
 
 
 ✔ Notes
-Executables in bin/ are the core of the PUDIS toolchain.
+Executables in /bin folder are the core of the PUDIS toolchain.
 Root PUDIS.exe is the user‑facing launcher.
 XML, logs, and reports are generated at runtime.
