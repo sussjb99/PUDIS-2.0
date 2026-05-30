@@ -74,7 +74,7 @@ PUDIS/
 | ``generate_report.exe`` | Produces final PUDIS report | ``---`` |
 | ``hashdeep64.exe`` | External hashing tool used for file integrity | ``---`` |
 | ``par2.exe`` | PAR2 engine for redundancy and recovery | ``---`` |
-| ``PUDIS.exe`` | Duplicate of root launcher (kept for compatibility) | ``---`` |
+| ``PUDIS.exe`` | Main Application Launcher for PUDIS Application Suite | ``---`` |
 | ``quick_file_check.exe`` | Fast integrity check using baseline | ``---`` |
 | ``recovery_estimate.exe`` | Estimates recovery time | ``---`` |
 | ``scantime_estimate.exe`` | Estimates scan duration | ``---`` |
