@@ -3,6 +3,7 @@ This document describes all files included in the PUDIS distribution folder, inc
 
 📁 Directory Tree
 
+```text
 PUDIS/
 │   Drive_Status.xml
 │   Help.html
@@ -43,6 +44,7 @@ PUDIS/
 └── scripts/
         pshell.bat
         replace_ampersands.ps1
+```
 
 📄 File Manifest Table
 
