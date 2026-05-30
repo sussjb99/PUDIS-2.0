@@ -57,7 +57,7 @@ PUDIS/
 | ``PUDIS.exe`` | Main launcher and UI front‑end | ``---`` |
 
 
-🔹 bin/ — Executables
+🔹 /bin — Executables
 | File | Description | SHA‑256 |
 | --- | --- | --- |
 | ``baselineXML_estimate.exe`` | Estimates baseline creation time | ``---`` |
