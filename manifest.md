@@ -81,31 +81,31 @@ PUDIS/
 | ``smartctl.exe`` | SMART data extraction tool | ``---`` |
 | ``surface_scan.exe`` | Performs surface scan on the drive | ``---`` |
 
-🔹 config/
+🔹 config/ — Configuration Files
 | File | Description | SHA‑256 |
 | --- | --- | --- |
 | ``config.ini`` | Main configuration file controlling all PUDIS modules | ``---`` |
 | ``drivedb.txt`` | Drive database for SMART attribute interpretation | ``---`` |
 
-🔹 data/
+🔹 data/ - Data Repository
 | File | Description | SHA‑256 |
 | --- | --- | --- |
 | ``logfiles.txt`` | Placeholder log file | ``---`` |
 
 
-🔹 logs/
+🔹 logs/ - Log File Repository
 | File | Description | SHA‑256 |
 | --- | --- | --- |
 | ``logfiles.txt`` | Placeholder log file | ``---`` |
 
 
-🔹 reports/
+🔹 reports/ - Report File Repository
 | File | Description | SHA‑256 |
 | --- | --- | --- |
 | ``reportfiles.txt`` | Placeholder report file | ``---`` |
 
 
-🔹 scripts/
+🔹 scripts/ -  Scripting File Repository
 | File | Description | SHA‑256 |
 | --- | --- | --- |
 | ``pshell.bat`` | Batch script wrapper for PowerShell execution | ``---`` |
