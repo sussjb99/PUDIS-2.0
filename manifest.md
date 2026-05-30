@@ -1,6 +1,6 @@
 📦 **PUDIS Installation Manifest** <br>
 This document describes all files included in the PUDIS distribution folders. <br>
-It including their description, and SHA‑256 hash values.
+It including their description and SHA‑256 hash values.
 
 📁 **Directory Tree** <br>
 ```text
