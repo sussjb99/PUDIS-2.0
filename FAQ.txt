@@ -1,0 +1,139 @@
+=============================================
+PUDIS-2.0 (Portable‑USB‑Drive‑Integrity‑Suite)
+File: FAQ.TXT
+Copyright (c) 2026 sussjb99
+All rights reserved.
+Last Updated: 2026/04/12
+=============================================
+
+1) Q  Why did I create this program?
+
+   A  This program was created to address my concern that although flash drives 
+      are very economical and convenient for storing small amounts of data,
+      if they are not used on a regular basis, they could potentially and 
+      unknowingly lose data integrity due to bit rot.
+
+
+2) Q  Why does the software prompt me for admin permissions when it starts?
+
+   A  This application makes use of the SMARTCTL.EXE utility to query storage 
+      devices. If the storage device is attached to the computer via a USB 
+      connection and is SMART compatible, then without full admin permissions 
+      many of the device's parameters will be hidden or inaccessible.
+
+      However, if you are concerned about this and only intend to use the 
+      software for checking standard flash drives, you may disable this 
+      requirement by manually modifying the !VERIFY_INTEGRITY.BAT file and 
+      removing the ADMIN ELEVATION BLOCK.
+
+
+3) Q  Why is this software running as a command-line tool instead of using a GUI?
+
+   A  Given that flash drives often do not have much free space to begin with, 
+      it was decided to make this program as small as possible. To achieve this 
+      objective, a GUI interface was deemed unnecessary.
+
+
+4) Q  Is this program suitable for validating larger storage devices such as USB 
+      SSD devices or USB HDD devices?
+
+   A  I would suggest limiting the usage of this software tool to devices with 
+      a maximum capacity of 500GB. Otherwise, the maintenance processing will 
+      likely take too long to complete. In the future, I plan to create a 
+      separate software tool designed for validating and maintaining larger 
+      capacity storage devices.
+
+
+5) Q  How much free space is required on the storage device to work effectively 
+      and successfully create the recovery set?
+
+   A  The answer depends on the nature of the data stored on the device. Based 
+      on my testing experience, I would suggest that between 10% and 20% of the 
+      disk needs to be free to accommodate the PAR2 recovery files and other 
+      overhead.
+
+
+6) Q  There are several versions of par2.exe out there. Why did you choose 
+      Turbo par2.exe?
+
+   A  My initial direction was to utilize the original Parchive par2cmdline.exe 
+      version. However, after doing some benchmark testing, it became apparent 
+      that the Turbo version completed the task more quickly. Consequently, I 
+      decided to move forward using the Turbo version of par2.exe.
+
+
+7) Q  Why did I have to modify the Turbo par2.exe with a custom patch?
+
+   A  Both the Parchive par2.exe and the Turbo version had a limitation: neither 
+      supported processing file lists specified from an input text file. This 
+      was unusual because older versions of PAR2 used to have this functionality. 
+      I patched the source code to restore this feature and submitted the change 
+      to the authors of Parchive and Turbo for consideration in future versions.
+
+
+8) Q  Why are some of the estimates being provided inaccurate?
+
+   A  There are two main reasons why the estimates can be inaccurate. Firstly, 
+      these estimates were calculated using my own computer equipment and 
+      external hard drives. Your equipment will likely differ and therefore 
+      produce different results. Secondly, caching can affect performance. Many 
+      external USB devices have built‑in caches, so the second time something 
+      runs, it will often run much faster. The Windows operating system also 
+      caches directory and file information in memory.
+
+      To validate this, try unplugging USB storage devices and then reconnecting 
+      them. Rebooting your computer will also clear these caches.
+
+
+9) Q  How can I test if the FILE INTEGRITY component of this software is actually 
+      working properly?
+
+   A  After running "Update File Baseline" and "Re‑Generate Recovery Data", you 
+      can manually add a new file, modify an existing file, or delete an 
+      existing file. To test the file recovery functionality, you can use the 
+      program "corruptor.exe" located in the bin directory. This program allows 
+      you to corrupt a file’s content without changing its modified date. When 
+      you run "Scan for Bit Rot", the program will offer to recover the file. 
+      The original file will be moved to a ".1" extension.
+
+      Note: I strongly advise against testing this recovery process on important 
+      files.
+
+
+10) Q How can I check if the program is still running and hasn't crashed?
+
+    A  Hashing large directories can take a long time to complete, especially on 
+       slower USB devices. It is normal for CPU usage to fluctuate as 
+       hashdeep64 processes batches of files. Using Task Manager, if 
+       hashdeep64.exe is still running and memory/CPU utilization is varying, 
+       the program is likely running properly. Be patient and it should 
+       eventually complete its procedures.
+
+       When the files "baseline.xml" and "current_check.xml" become larger than 
+       zero bytes, the program will be able to proceed to its next step.
+
+
+11) Q What are some of the limitations of this software?
+
+    A  This software may take an exorbitant amount of time to complete 
+       processing if the storage device is over 500GB in capacity. In addition, 
+       the storage device needs between 10% and 20% free space to store the PAR2 
+       and other files.
+
+
+12) Q Why do you need financial support?
+
+    A  If I receive sufficient financial support, I will first use the funding 
+       to procure a trusted certificate for signing my executables. This helps 
+       prevent antivirus software from deleting or blocking them. I will also 
+       use the funding to procure web hosting services and a domain name, and 
+       to support future development and maintenance of this software.
+
+
+13) Q What are your future plans for this software?
+
+    A  I would like to continue supporting this software, fixing any obvious 
+       bugs or deficiencies and improving its functionality. I also have plans 
+       for a future project designed to run on a Raspberry Pi. It will include 
+       integrated scheduling, emailing, and reporting functionalities, and will 
+       be able to validate much larger storage devices.
