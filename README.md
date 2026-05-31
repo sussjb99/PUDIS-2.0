@@ -117,8 +117,9 @@ PUDIS automatically guides you through the required steps in the correct order.
 To build from source:
 1. Clone this repository.
 2. Ensure you have a C++ compiler similar to "Microsoft (R) C/C++ Optimizing Compiler Version 19.50.35730 for x64"
-3. Review the scripts in `Integrity_Check/scripts/` to understand the execution flow.
+3. Compile the source code using the compile.bat script
 4. Review `manifest.md` to ensure your compiled binaries match the expected project structure.
+5. Acquire any of the missing required 3rd party executables from their designated sources.
 
 ---
 
