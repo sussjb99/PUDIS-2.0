@@ -250,8 +250,15 @@ WORD ResolveColor(const std::wstring& nameRaw)
 }
 
 int wmain() {
+    // Lock the system and display to AWAKE the moment the suite launcher initializes.
+    // This protects all executed child test sequences (like surface scans) from sleeping bugs.
+    SetThreadExecutionState(ES_CONTINUOUS | ES_SYSTEM_REQUIRED | ES_DISPLAY_REQUIRED);
+
     wchar_t pathBuf[MAX_PATH];
-    if (!GetModuleFileNameW(nullptr, pathBuf, MAX_PATH)) return 1;
+    if (!GetModuleFileNameW(nullptr, pathBuf, MAX_PATH)) {
+        SetThreadExecutionState(ES_CONTINUOUS); // Restore before crash failure path
+        return 1;
+    }
 
     // ============================================================
     // FIXED PATH RESOLUTION: RUNTIME DIRECTORY CONTEXT AWARE
@@ -260,15 +267,20 @@ int wmain() {
     // 1. Determine exactly where PUDIS.exe is running from
     std::wstring exeFullPath(pathBuf);
     size_t lastSlash = exeFullPath.find_last_of(L"\\/");
-    if (lastSlash == std::wstring::npos) return 1;
+    if (lastSlash == std::wstring::npos) {
+        SetThreadExecutionState(ES_CONTINUOUS);
+        return 1;
+    }
     std::wstring appDir = exeFullPath.substr(0, lastSlash + 1); // Extract runtime path folder
 
     // Enforce system drive safeguard relative to app target
     wchar_t driveRoot[MAX_PATH];
     wcscpy_s(driveRoot, appDir.c_str());
     PathStripToRootW(driveRoot); 
-    if (towupper(driveRoot[0]) == L'C')
+    if (towupper(driveRoot[0]) == L'C') {
+        SetThreadExecutionState(ES_CONTINUOUS);
         FatalExit(L"PUDIS is restricted from running on the system drive (C:).");
+    }
 
     // 2. Locate config.ini directly inside the config subfolder where PUDIS is executed
     std::wstring iniPath = appDir + L"config\\config.ini";
@@ -421,6 +433,7 @@ int wmain() {
 
     if (requireAdmin && !IsAdmin())
     {
+        SetThreadExecutionState(ES_CONTINUOUS); // Relinquish awake state on execution handoff
         RelaunchAsAdmin(exePath);
     }
 
@@ -805,6 +818,9 @@ int wmain() {
         std::wcout << L"\n[ERROR] Invalid selection.\nPress any key...";
         _getwch();
     }
+
+    // Release awake locks and return to OS standard low-power profile configurations
+    SetThreadExecutionState(ES_CONTINUOUS);
 
     return 0;
 }

@@ -3,7 +3,7 @@
    File: surface_scan.cpp
    Version: 5.0.0 (Technology-Aware CMR/SMR Mechanical Differentiated Grading)
    Author: sussjb99
-   Last Modified: 2026-05-29
+   Last Modified: 2026-05-31
 
    Copyright (c) 2026 sussjb99. All rights reserved.
    Licensed under the MIT License. See LICENSE.txt for details.
@@ -307,7 +307,6 @@ string GetTechnicalGrade(double stab, int errors, double avgSpeed, int activeCoo
     bool isSMR = (tUpper.find("SMR") != string::npos);
     bool isCMR = (tUpper.find("CMR") != string::npos || tUpper == "HDD");
 
-    // SMR hard-drives naturally scale down into single digits during track-shingling merge operations
     double criticalSpeedFloor = isSMR ? 4.0 : 10.0;
 
     if (avgSpeed < criticalSpeedFloor) {
@@ -316,7 +315,6 @@ string GetTechnicalGrade(double stab, int errors, double avgSpeed, int activeCoo
         return "Degraded (Extreme Jitter)";
     }
 
-    // Establish baseline operational thresholds factoring in natural mechanical track diameter drop-offs
     double passingStabilityThreshold;
     double healthyStabilityThreshold;
 
@@ -324,12 +322,9 @@ string GetTechnicalGrade(double stab, int errors, double avgSpeed, int activeCoo
         passingStabilityThreshold = (activeCooldown > 0) ? 45.0 : 50.0;
         healthyStabilityThreshold = (activeCooldown > 0) ? 65.0 : 70.0;
     } else if (isCMR) {
-        // A healthy CMR drive drops up to 50% in transfer speed natively from outer to inner tracks.
-        // We set the baseline floor to 45% to accommodate a completely normal physical profile.
         passingStabilityThreshold = (activeCooldown > 0) ? 40.0 : 45.0;
         healthyStabilityThreshold = (activeCooldown > 0) ? 45.0 : 50.0;
     } else {
-        // Solid State Drives (Flash Media) should maintain uniform flat speed layouts
         passingStabilityThreshold = (activeCooldown > 0) ? 55.0 : 60.0;
         healthyStabilityThreshold = (activeCooldown > 0) ? 75.0 : 85.0;
     }
@@ -344,27 +339,23 @@ string GetTechnicalGrade(double stab, int errors, double avgSpeed, int activeCoo
    Adaptive Cooldown Calculation Engine
    ============================================================ */
 int CalculateDynamicCooldown(int driveType, double accessLatencyMS, double sustainedWriteMBps) {
-    // Fallback safeguard if incoming metrics are zero or negative
     if (accessLatencyMS <= 0.0) accessLatencyMS = 1.0;
     if (sustainedWriteMBps <= 0.0) sustainedWriteMBps = 100.0;
 
     double calculatedCooldown = 0.0;
 
     switch (driveType) {
-        case 1: // Mechanical Hard Drives (PMR/CMR/SMR)
-            // Slower write architectures or drives with high access latencies require deep thermal pacing
+        case 1: 
             calculatedCooldown = (accessLatencyMS * 1.5) + (150.0 / sustainedWriteMBps);
             break;
-        case 2: // Solid State Disks (SATA/NVMe)
-            // Flash media requires minimal pacing thresholds, primarily to handle heavy queue blocks
+        case 2: 
             calculatedCooldown = (accessLatencyMS * 0.2) + (20.0 / sustainedWriteMBps);
             break;
-        default: // Default safety profile
+        default: 
             calculatedCooldown = 10.0;
             break;
     }
 
-    // Bound the response to a maximum safety ceiling of 100ms and floor it to an integer
     int finalCooldown = static_cast<int>(calculatedCooldown);
     if (finalCooldown > 100) finalCooldown = 100;
     if (finalCooldown < 0) finalCooldown = 0;
@@ -402,9 +393,6 @@ int main(int argc, char* argv[]) {
     string mode = argv[2];
     string rootBase = string(1, dl) + ":\\";
 
-    // ============================================================
-    // DYNAMIC ENVIRONMENT PATH RESOLUTION ENGINE
-    // ============================================================
     char pathBuf[MAX_PATH];
     if (!GetModuleFileNameA(NULL, pathBuf, MAX_PATH)) {
         cerr << "ERROR: Failed to resolve current process binary base location." << endl;
@@ -414,7 +402,7 @@ int main(int argc, char* argv[]) {
     string exeFullPath(pathBuf);
     size_t lastSlashPos = exeFullPath.find_last_of("\\/");
     if (lastSlashPos == string::npos) return 1;
-    string appDir = exeFullPath.substr(0, lastSlashPos + 1); // Folder containing executable ("bin\")
+    string appDir = exeFullPath.substr(0, lastSlashPos + 1); 
 
     string configPath = "";
     string folderConfig = appDir + "..\\config\\config.ini"; 
@@ -495,7 +483,7 @@ int main(int argc, char* argv[]) {
        Technology Ingestion Pre-flight Parse Layer
        ============================================================ */
     DriveInfo dev = GetDriveDetails(driveLtr);
-    string resolvedDriveTech = dev.tech; // Fallback defaults to standard runtime detection
+    string resolvedDriveTech = dev.tech; 
 
     ifstream preFlightXml(xmlPath);
     if (preFlightXml) {
@@ -657,6 +645,9 @@ int main(int argc, char* argv[]) {
     const size_t SUB_BLOCK_SIZE = 64 * 1024; 
     vector<char> buffer(CHUNK_SIZE);
 
+    double movingAvgWriteSpeed = 0.0;
+    const int ROLLING_SAMPLE_SIZE = 3;
+
     if (totalFiles > 0) {
 
         for (int i = 1; i <= totalFiles; ++i) {
@@ -705,8 +696,22 @@ int main(int argc, char* argv[]) {
                 size_t remaining = CHUNK_SIZE - bytesWrittenTotal;
                 DWORD currentWriteSize = static_cast<DWORD>((remaining > SUB_BLOCK_SIZE) ? SUB_BLOCK_SIZE : remaining);
 
+                auto subBlockStart = steady_clock::now();
+
                 BOOL writeSuccess = WriteFile(h, buffer.data() + bytesWrittenTotal, currentWriteSize, &bytesToResult, NULL);
                 
+                auto subBlockEnd = steady_clock::now();
+                auto elapsedSeconds = duration_cast<seconds>(subBlockEnd - subBlockStart).count();
+
+                if (elapsedSeconds > 30) {
+                    if (logEnabled) {
+                        WriteModuleLog(logsPath, LOG_WARN, currentLogLevel, 
+                            "SMR Hardware Cache Exhaustion detected. Transaction timed out at file " + to_string(i));
+                    }
+                    wRes = FALSE;
+                    break;
+                }
+
                 if (!writeSuccess || bytesToResult == 0) {
                     if (stallRetries < 5) {
                         stallRetries++;
@@ -747,10 +752,10 @@ int main(int argc, char* argv[]) {
             if (!wRes) {
                 errors++;
                 if (logEnabled && logIOErrors) {
-                    WriteModuleLog(logsPath, LOG_ERROR, currentLogLevel, "Fatal sector transaction drop on file: " + p);
+                    WriteModuleLog(logsPath, LOG_ERROR, currentLogLevel, "Fatal sector transaction drop or cache timeout on file: " + p);
                 }
                 DeleteFileA(p.c_str()); 
-                continue; 
+                break; 
             }
 
             double ticks = static_cast<double>(e.QuadPart - s.QuadPart);
@@ -767,8 +772,23 @@ int main(int argc, char* argv[]) {
                 lastLoggedProgress = currentProgress;
             }
 
-            if (activeCooldownMS > 0) {
-                std::this_thread::sleep_for(std::chrono::milliseconds(activeCooldownMS * 10));
+            if (wSpeeds.size() >= ROLLING_SAMPLE_SIZE) {
+                movingAvgWriteSpeed = (wSpeeds[wSpeeds.size() - 1] + wSpeeds[wSpeeds.size() - 2] + wSpeeds[wSpeeds.size() - 3]) / 3.0;
+                
+                if (movingAvgWriteSpeed < 15.0 && !isSSD) {
+                    std::this_thread::sleep_for(std::chrono::milliseconds(800));
+                }
+                else if (isSSD) {
+                    if (activeCooldownMS > 0) {
+                        std::this_thread::sleep_for(std::chrono::milliseconds(activeCooldownMS * 12));
+                    } else {
+                        std::this_thread::sleep_for(std::chrono::milliseconds(30));
+                    }
+                }
+            } else {
+                if (activeCooldownMS > 0) {
+                    std::this_thread::sleep_for(std::chrono::milliseconds(activeCooldownMS * 10));
+                }
             }
         }
 
