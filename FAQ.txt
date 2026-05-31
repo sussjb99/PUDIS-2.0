@@ -21,10 +21,12 @@ Last Updated: 2026/04/12
       connection and is SMART compatible, then without full admin permissions 
       many of the device's parameters will be hidden or inaccessible.
 
-      However, if you are concerned about this and only intend to use the 
+      However, if you are concerned about this and only intend to use this 
       software for checking standard flash drives, you may disable this 
-      requirement by manually modifying the !VERIFY_INTEGRITY.BAT file and 
-      removing the ADMIN ELEVATION BLOCK.
+      feature by manually modifying the config.ini. 
+      Change: 
+       From RequireAdmin=1 
+       To RequireAdmin=0
 
 
 3) Q  Why is this software running as a command-line tool instead of using a GUI?
