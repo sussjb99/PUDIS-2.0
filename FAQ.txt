@@ -97,11 +97,11 @@ Last Updated: 2026/05/31
       existing file. And then to test the file recovery functionality, you can use the 
       program "corruptor.exe" located in the bin directory. This program allows 
       you to corrupt a file’s content without changing its modified date. Then when 
-      you run "Bit-Rot Detection", the program will offer to recover corrupted
+      you run "Bit-Rot Detection", the program will offer to recover these corrupted
       files. The original file will be moved to a ".1" extension.
 
       Note: I strongly advise against testing this recovery process on important 
-      files.
+      files and also alway have a backup of your files on a separate media.
 
 
 10) Q How can I check if the program is still running and hasn't crashed?
