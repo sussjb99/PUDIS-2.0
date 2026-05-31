@@ -112,7 +112,8 @@ PUDIS/
 | ``replace_ampersands.ps1`` | Script to sanitize XML output | ``---`` |
 
 
-✔ Notes
-Executables in /bin folder are the core of the PUDIS toolchain.
-Root PUDIS.exe is the user‑facing launcher.
-XML, logs, and reports are generated at runtime.
+✔ **Notes**
+* Executables in /bin folder are the core of the PUDIS toolchain.
+* Root PUDIS.exe is the user‑facing launcher.
+* XML, logs, and reports are generated at runtime.
+
