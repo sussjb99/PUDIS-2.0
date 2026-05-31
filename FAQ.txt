@@ -113,7 +113,7 @@ Last Updated: 2026/05/31
        the program is likely running properly. Be patient and it should 
        eventually complete its procedures.
 
-       When the files "baseline.xml" and "current_check.xml" become larger than 
+       When the files "baseline.xml" and "current_check.xml" become greater than 
        zero bytes, the program will be able to proceed to its next step.
 
 
