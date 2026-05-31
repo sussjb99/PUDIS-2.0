@@ -90,7 +90,7 @@ PUDIS/
 🔹 data/ — Data Repository
 | File | Description | SHA‑256 |
 | --- | --- | --- |
-| ``logfiles.txt`` | Placeholder log file | ``---`` |
+| ``datafiles.txt`` | Placeholder log file | ``---`` |
 
 
 🔹 logs/ — Log File Repository
