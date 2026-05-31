@@ -48,7 +48,7 @@ Last Updated: 2026/05/31
 
 
 5) Q  How much free space is required on the storage device to work effectively 
-      and successfully create the recovery set?
+      and successfully create the recovery data set?
 
    A  The answer depends on the nature of the data stored on the device. Based 
       on my testing experience, I would suggest that between 10% and 20% of the 
