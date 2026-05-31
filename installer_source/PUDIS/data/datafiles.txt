@@ -1,0 +1,24 @@
+Sample listing of files stored in data directory
+************************************************
+
+XXX.h2w					Intermittent files created for reading and writing file system performance and validation testing
+basline.xml             		Historical xml listing documenting; filename, filesize, filetimes, and MD5 Hash Values of all files
+baseline_file.txt			Historical Listing of all filenames found on storage device
+current_check.xml			Current XML listing documenting the filename, filesize, filetimes, and MDF Hash Values of all files
+files_part01.txt			First subsection listing of files to perform par2 validations on. (25000 max per set)
+quick_check_files.txt 			Current listing of files to process for par2 validation processing
+
+
+Files utilized for the par2 recovery processing
+***********************************************
+recovery_data.part01.par2		
+recovery_data_part01.vol0000+0001.par2	
+recovery_data_part01.vol0001+0002.par2	
+recovery_data_part01.vol0003+0004.par2
+recovery_data_part01.vol0007+0008.par2
+recovery_data_part01.vol0015+0016.par2
+recovery_data_part01.vol0031+0032.par2
+
+
+
+
