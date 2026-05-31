@@ -1,0 +1,22 @@
+PUDIS-2.0 (Portable‑USB‑Drive‑Integrity‑Suite)
+Copyright (c) 2026 sussjb99
+All rights reserved.
+
+This software, including all batch files, PowerShell scripts,
+C++ source files, documentation, and supporting materials, is
+the original work of the author unless otherwise noted.
+
+The software is licensed under the MIT License. A full copy of
+the license is provided in the accompanying LICENSE.txt file.
+
+Third‑party executables included with this software bundle
+(such as smartctl.exe, par2.exe, and hashdeep64.exe) are
+separate, independently licensed programs. Their respective
+licenses and attribution details are provided in NOTICE.txt.
+
+No part of this software may be used, copied, modified, merged,
+published, distributed, sublicensed, or sold except as permitted
+under the terms of the MIT License.
+
+The author retains all copyright and intellectual property
+rights to the original portions of this software.
