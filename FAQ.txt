@@ -140,4 +140,16 @@ Last Updated: 2026/05/31
        bugs or deficiencies and improving its functionality. I also have plans 
        for a future project designed to run on a Raspberry Pi. It will include 
        integrated scheduling, emailing, and reporting functionalities, and will 
-       be able to validate much larger storage devices.
+       be able to validate larger storage devices.
+
+14) Q Why did you modify your orginal program to run primarily in C++?
+
+    A My initial reasoning for this change was actually to facilate an easier 
+      path for the software's distribution. It seems many virus scanning tools were
+      blocking my powershell scripts from being installed or being run. And so 
+      bycompiling my code with C++  the virus scanning tools were expected to be 
+      less concerned. However, as an added benifit, I also found that 
+      it was easier to enhance the functionality of the software by utilizing C++ 
+      and also improved some of the performance of the application's functionality.
+    
+
