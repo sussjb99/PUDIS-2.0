@@ -96,13 +96,13 @@ PUDIS/
 🔹 logs/ — Log File Repository
 | File | Description | SHA‑256 |
 | --- | --- | --- |
-| ``logfiles.txt`` | Placeholder log file | ``---`` |
+| ``logfiles.txt`` | Placeholder log file | ``5F7052FDA0F5B2C35CA1ADE39CE01F72BF04C57CBAA29CB2AA005FC689DD6EF0`` |
 
 
 🔹 reports/ — Report File Repository
 | File | Description | SHA‑256 |
 | --- | --- | --- |
-| ``reportfiles.txt`` | Placeholder report file | ``---`` |
+| ``reportfiles.txt`` | Placeholder report file | ``3A19F74542AAAB89CEE968D6241F60ADC092CC2878F4602BEA90DF02154B6860`` |
 
 
 🔹 scripts/ — Scripting File Repository
