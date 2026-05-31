@@ -92,12 +92,12 @@ Last Updated: 2026/05/31
 9) Q  How can I test if the FILE INTEGRITY component of this software is actually 
       working properly?
 
-   A  After running "Update File Baseline" and "Re‑Generate Recovery Data", you 
+   A  After running "Re-Create Baseline" and "Re‑Generate Recovery" , you 
       can manually add a new file, modify an existing file, or delete an 
-      existing file. To test the file recovery functionality, you can use the 
+      existing file. And then to test the file recovery functionality, you can use the 
       program "corruptor.exe" located in the bin directory. This program allows 
       you to corrupt a file’s content without changing its modified date. Then when 
-      you run "Scan for Bit Rot", the program will offer to recover corrupted
+      you run "Bit-Rot Detection", the program will offer to recover corrupted
       files. The original file will be moved to a ".1" extension.
 
       Note: I strongly advise against testing this recovery process on important 
