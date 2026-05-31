@@ -26,10 +26,10 @@ Last Updated: 2026/05/31
       feature by manually modifying the config.ini. 
       Change: 
        From RequireAdmin=1 
-       To RequireAdmin=0
+       To   RequireAdmin=0
 
 
-3) Q  Why is this software running as a text based tool instead of 
+3) Q  Why is this software running as a text‑based tool instead of 
       using a GUI?
 
    A  Given that flash drives often do not have much free space to begin with, 
@@ -82,7 +82,7 @@ Last Updated: 2026/05/31
       produce different results. Secondly, caching can affect performance. Many 
       external USB devices have built‑in caches, so the second time something 
       runs, it will often run much faster. The Windows operating system also 
-      caches directories and files information in memory so in certain situations
+      caches directory and file information in memory, so in certain situations
       some tasks perform more quickly than estimated.
 
       To validate this, try unplugging USB storage devices and then reconnecting 
@@ -92,16 +92,16 @@ Last Updated: 2026/05/31
 9) Q  How can I test if the FILE INTEGRITY component of this software is actually 
       working properly?
 
-   A  After running "Re-Create Baseline" and "Re‑Generate Recovery" , you 
+   A  After running "Re‑Create Baseline" and "Re‑Generate Recovery", you 
       can manually add a new file, modify an existing file, or delete an 
-      existing file. And then to test the file recovery functionality, you can use the 
+      existing file. To test the file recovery functionality, you can use the 
       program "corruptor.exe" located in the bin directory. This program allows 
-      you to corrupt a file’s content without changing its modified date. Then when 
-      you run "Bit-Rot Detection", the program will offer to recover these corrupted
-      files. The original file will be moved to a ".1" extension.
+      you to corrupt a file’s content without changing its modified date. Then, 
+      when you run "Bit‑Rot Detection", the program will offer to recover these 
+      corrupted files. The original file will be moved to a ".1" extension.
 
       Note: I strongly advise against testing this recovery process on important 
-      files and also alway have a backup of your files on a separate media.
+      files and always have a backup of your files on separate media.
 
 
 10) Q How can I check if the program is still running and hasn't crashed?
@@ -142,14 +142,14 @@ Last Updated: 2026/05/31
        integrated scheduling, emailing, and reporting functionalities, and will 
        be able to validate larger storage devices.
 
-14) Q Why did you modify your orginal program to run primarily in C++?
 
-    A My initial reasoning for this change was actually to facilate an easier 
-      path for the software's distribution. It seems many virus scanning tools were
-      blocking my powershell scripts from being installed or being run. And so 
-      by compiling my code with C++  the virus scanning tools were expected to be 
-      less alarming in their concerns. However, as an added benifit, I also found that 
-      it was easier to enhance the functionality of the software by utilizing C++ 
-      and also improved some of the performance of the application's functionality.
-    
+14) Q Why did you modify your original program to run primarily in C++?
 
+    A  My initial reasoning for this change was to facilitate an easier 
+       path for the software's distribution. It seems many virus scanning tools 
+       were blocking my PowerShell scripts from being installed or run. By 
+       compiling my code with C++, the virus scanning tools were expected to be 
+       less alarming in their concerns. As an added benefit, I also found that 
+       it was easier to enhance the functionality of the software by utilizing 
+       C++, and it also improved some of the performance of the application's 
+       functionality.
