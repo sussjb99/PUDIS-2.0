@@ -108,8 +108,8 @@ PUDIS/
 🔹 scripts/ — Scripting File Repository
 | File | Description | SHA‑256 |
 | --- | --- | --- |
-| ``pshell.bat`` | Batch script wrapper for PowerShell execution | ``---`` |
-| ``replace_ampersands.ps1`` | Script to sanitize XML output | ``---`` |
+| ``pshell.bat`` | Batch script wrapper for PowerShell execution | ``8F947B928411A768D7B07F8F3797233B6EB568C019525071A3ACF1EE2A08A541`` |
+| ``replace_ampersands.ps1`` | Script to sanitize XML output | ``40D4ED3428854FAD94CE05498FD921F7B453AED7F442D344E4A6DC25D0AA2367`` |
 
 
 ✔ **Notes**
