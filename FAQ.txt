@@ -29,7 +29,8 @@ Last Updated: 2026/05/31
        To RequireAdmin=0
 
 
-3) Q  Why is this software running as a command-line tool instead of using a GUI?
+3) Q  Why is this software running as a command-line text based tool instead of 
+      using a GUI?
 
    A  Given that flash drives often do not have much free space to begin with, 
       it was decided to make this program as small as possible. To achieve this 
