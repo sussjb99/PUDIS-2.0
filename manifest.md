@@ -84,8 +84,8 @@ PUDIS/
 🔹 config/ — Configuration Files
 | File | Description | SHA‑256 |
 | --- | --- | --- |
-| ``config.ini`` | Main configuration file controlling all PUDIS modules | ``---`` |
-| ``drivedb.txt`` | Drive database for SMART attribute interpretation | ``---`` |
+| ``config.ini`` | Main configuration file controlling all PUDIS modules | ``6E653C687B7E66CBDA6FC27B8B1282DE5E626552908D3008453D483E7ACD9DA5`` |
+| ``drivedb.txt`` | Drive database for SMART attribute interpretation | ``612FC34980C0DA7D7163473A12C01095B579F85388A7CFA3CBADAC6C0D914B83`` |
 
 🔹 data/ — Data Repository
 | File | Description | SHA‑256 |
