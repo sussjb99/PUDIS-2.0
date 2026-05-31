@@ -73,7 +73,7 @@ The suite maintains a cryptographic baseline of all files, including:
 
 **It detects:** 
 - New, deleted, or modified files.
-- **Corrupted files (bit rot):** Files whose hash value has changed even though the timestamp remains identical.
+- And any **Corrupted files (bit rot)** files whose hash value has changed even though the timestamp remains identical.
 
 If PAR2 recovery data exists, the suite can automatically repair corrupted files. Recovered files are written back safely, and corrupted originals are preserved with a `.1` suffix.
 
