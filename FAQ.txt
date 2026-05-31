@@ -3,7 +3,7 @@ PUDIS-2.0 (Portable‑USB‑Drive‑Integrity‑Suite)
 File: FAQ.TXT
 Copyright (c) 2026 sussjb99
 All rights reserved.
-Last Updated: 2026/04/12
+Last Updated: 2026/05/31
 =============================================
 
 1) Q  Why did I create this program?
