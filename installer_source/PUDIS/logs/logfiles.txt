@@ -1,0 +1,6 @@
+Sample listing of files stored in logs folder
+*********************************************
+FileListGenErrors.log
+par2_debug_part01.log
+par2_debug_part02.log
+surface_scan.log
