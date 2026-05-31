@@ -82,7 +82,8 @@ Last Updated: 2026/05/31
       produce different results. Secondly, caching can affect performance. Many 
       external USB devices have built‑in caches, so the second time something 
       runs, it will often run much faster. The Windows operating system also 
-      caches directory and file information in memory.
+      caches directories and files information in memory so in certain situations
+      some tasks perform more quickly than estimated.
 
       To validate this, try unplugging USB storage devices and then reconnecting 
       them. Rebooting your computer will also clear these caches.
