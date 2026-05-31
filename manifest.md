@@ -52,9 +52,9 @@ PUDIS/
 
 | File | Description | SHA‑256 |
 | --- | --- | --- |
-| ``Drive_Status.xml`` | Current drive identity, SMART data, calibration results | ``---`` |
-| ``Help.html`` | Offline help documentation for PUDIS | ``---`` |
-| ``PUDIS.exe`` | Main launcher and UI front‑end | ``---`` |
+| ``Drive_Status.xml`` | Current drive identity, SMART data, calibration results | ``9AF2A0DE3476F25AF52F477160EC97D5698717AB604B0C0E802DABFE1F8ED94E`` |
+| ``Help.html`` | Offline help documentation for PUDIS | ``F3F238F38E0B98C67F6414593CC3199EC326F06E05FC712E52A991CD38D8E5F9`` |
+| ``PUDIS.exe`` | Main launcher and UI front‑end | ``70F41A85D66193ADEAC1FEFC91F7BA23E74AC09F6DA214105D4F3A12261C71A5`` |
 
 
 🔹 bin/  — Executables
