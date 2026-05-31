@@ -148,7 +148,7 @@ Last Updated: 2026/05/31
       path for the software's distribution. It seems many virus scanning tools were
       blocking my powershell scripts from being installed or being run. And so 
       by compiling my code with C++  the virus scanning tools were expected to be 
-      less concerned. However, as an added benifit, I also found that 
+      less alarming in their concerns. However, as an added benifit, I also found that 
       it was easier to enhance the functionality of the software by utilizing C++ 
       and also improved some of the performance of the application's functionality.
     
