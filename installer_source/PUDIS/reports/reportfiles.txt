@@ -1,0 +1,7 @@
+This folder is where the user generate reports are saved
+********************************************************
+It will contain file listings similar to this:
+REPORT_20260528_204845.html
+REPORT_20260529_091534.html
+REPORT_20260530_132525.html
+ 
