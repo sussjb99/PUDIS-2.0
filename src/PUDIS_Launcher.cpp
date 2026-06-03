@@ -1,8 +1,8 @@
 /* ============================================================
    PUDIS-2.0 (Portable USB Drive Integrity Suite)
    File: PUDIS_Launcher.cpp
-   Version: 3.0 (Dynamic Windowed/App Mode Help Architecture)
-   Last Modified: 2026-05-25
+   Version: 3.1 (Flicker-Reduction & Robust Parsing)
+   Last Modified: 2026-06-03
    Author: sussjb99
 
    Copyright (c) 2026 sussjb99. All rights reserved.
@@ -68,6 +68,18 @@ void RelaunchAsAdmin(const std::wstring& exePath)
     ExitProcess(0);
 }
 
+// ============================================================
+// UI & UTILITY FUNCTIONS
+// ============================================================
+
+// NEW: Helper to reset cursor to (0,0) to eliminate flicker
+// This overwrites text instead of clearing the whole buffer.
+void ResetCursor() {
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD coord = { 0, 0 };
+    SetConsoleCursorPosition(hOut, coord);
+}
+
 void OpenLogsFolderStyled(const std::wstring& folder)
 {
     HINSTANCE h = ShellExecuteW(nullptr, L"open", folder.c_str(), nullptr, nullptr, SW_SHOWNORMAL);
@@ -100,7 +112,6 @@ void OpenLogsFolderStyled(const std::wstring& folder)
         SetForegroundWindow(console);
 }
 
-
 std::wstring s2ws(const std::string& s) {
     if (s.empty()) return L"";
     int len = MultiByteToWideChar(CP_UTF8, 0, s.c_str(), (int)s.length(), NULL, 0);
@@ -131,12 +142,17 @@ bool RunTool(const std::wstring& exePath, const std::wstring& args, const std::w
     return true;
 }
 
+// IMPROVED: Robust Tag Extraction
+// Looks for the specific closing tag to avoid errors if the data itself 
+// contains the '>' character.
 std::string ExtractTag(const std::string& xml, const std::string& tag) {
     std::string openTag = "<" + tag + ">";
     std::string closeTag = "</" + tag + ">";
     size_t s = xml.find(openTag);
     if (s == std::string::npos) return "";
     s += openTag.length();
+    
+    // Search for the specific closing tag instead of just the next '>'
     size_t e = xml.find(closeTag, s);
     if (e == std::string::npos) return "";
     std::string val = xml.substr(s, e - s);
@@ -198,7 +214,10 @@ bool CalibrationComplete(const std::wstring& iniPath) {
 WORD ResolveColor(const std::wstring& nameRaw)
 {
     std::wstring name = nameRaw;
-    std::transform(name.begin(), name.end(), name.begin(), ::towupper);
+    // Fix: Using a lambda for std::transform to satisfy modern compiler ambiguities
+    std::transform(name.begin(), name.end(), name.begin(), [](wchar_t c) {
+        return ::towupper(c);
+    });
 
     if (name == L"CYAN")      return FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY;
     if (name == L"GREEN")     return FOREGROUND_GREEN | FOREGROUND_INTENSITY;
@@ -219,7 +238,7 @@ int wmain() {
 
     wchar_t pathBuf[MAX_PATH];
     if (!GetModuleFileNameW(nullptr, pathBuf, MAX_PATH)) {
-        SetThreadExecutionState(ES_CONTINUOUS); // Restore before crash failure path
+        SetThreadExecutionState(ES_CONTINUOUS); 
         return 1;
     }
 
@@ -234,7 +253,7 @@ int wmain() {
         SetThreadExecutionState(ES_CONTINUOUS);
         return 1;
     }
-    std::wstring appDir = exeFullPath.substr(0, lastSlash + 1); // Extract runtime path folder
+    std::wstring appDir = exeFullPath.substr(0, lastSlash + 1); 
 
     // Enforce system drive safeguard relative to app target
     wchar_t driveRoot[MAX_PATH];
@@ -396,9 +415,15 @@ int wmain() {
 
     if (requireAdmin && !IsAdmin())
     {
-        SetThreadExecutionState(ES_CONTINUOUS); // Relinquish awake state on execution handoff
+        SetThreadExecutionState(ES_CONTINUOUS); 
         RelaunchAsAdmin(exePath);
     }
+
+    // Prepare console for overwriting (VTP)
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    DWORD dwConsoleMode = 0;
+    GetConsoleMode(hConsole, &dwConsoleMode);
+    SetConsoleMode(hConsole, dwConsoleMode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
 
     // ============================================================
     // MAIN LOOP
@@ -423,7 +448,8 @@ int wmain() {
 
         DriveStatus ds = LoadDriveStatus(absStatus);
 
-        system("cls");
+        // REPLACED: system("cls") with ResetCursor to eliminate flicker
+        ResetCursor();
 
         // DASHBOARD OUTPUT
         C(SEPARATOR); std::wcout << L"====================================================================\n"; R();
@@ -548,6 +574,7 @@ int wmain() {
             if (yn != L'Y') {
                 std::wcout << L"\nOperation cancelled.\nPress any key to return...";
                 _getwch();
+                system("cls"); // Cleanup for fresh dashboard
                 continue;
             }
 
@@ -560,6 +587,7 @@ int wmain() {
 
             std::wcout << L"\n[FINISH] Bit Rot Scan complete.\nPress any key to refresh dashboard...";
             _getwch();
+            system("cls"); // Cleanup for fresh dashboard
             continue;
         }
 
@@ -592,6 +620,7 @@ int wmain() {
             if (yn != L'Y') {
                 std::wcout << L"\nBaseline update cancelled.\nPress any key to return...";
                 _getwch();
+                system("cls");
                 continue;
             }
 
@@ -605,6 +634,7 @@ int wmain() {
 
             std::wcout << L"\n[FINISH] Baseline rebuild complete.\nPress any key to refresh dashboard...";
             _getwch();
+            system("cls");
             continue;
         }
 
@@ -639,6 +669,7 @@ int wmain() {
 
             std::wcout << L"\nPress any key to return to the menu...";
             _getwch();
+            system("cls");
             continue;
         }
 
@@ -648,6 +679,7 @@ int wmain() {
 
             std::wcout << L"\nCalibration complete. Press any key to return...";
             _getwch();
+            system("cls");
             continue;
         }
 
@@ -668,6 +700,7 @@ int wmain() {
                 std::wcout << L"\n[FINISH] Surface scan sequence complete.\nPress any key...";
                 _getwch();
             }
+            system("cls");
             continue;
         }
 
@@ -686,6 +719,7 @@ int wmain() {
 
             std::wcout << L"Press any key to return...";
             _getwch();
+            system("cls");
             continue;
         }
 
@@ -698,14 +732,12 @@ int wmain() {
             std::wcout << L"\nParsing configuration and initializing web browser...\n";
             std::wcout.flush();
 
-            // 1. Read Browser settings dynamically from config.ini
             wchar_t browserType[128];
             GetPrivateProfileStringW(L"Browser", L"Browser", L"default", browserType, 128, iniPath.c_str());
 
             int targetW = GetPrivateProfileIntW(L"Browser", L"WindowWidth", 800, iniPath.c_str());
             int targetH = GetPrivateProfileIntW(L"Browser", L"WindowHeight", 600, iniPath.c_str());
             
-            // Fetch WindowedMode parameter (defaults to 1 = Windowed/App Mode enabled)
             int windowedMode = GetPrivateProfileIntW(L"Browser", L"WindowedMode", 1, iniPath.c_str());
 
             std::wstring browserChoice(browserType);
@@ -713,9 +745,7 @@ int wmain() {
 
             bool executionSuccess = false;
 
-            // 2. Evaluate target path or explicit browser engine mapping
             if (browserChoice == L"default") {
-                // System fallback uses standard OS shell registration association (ignores sizes natively)
                 HINSTANCE h = ShellExecuteW(nullptr, L"open", helpFile.c_str(), nullptr, nullptr, SW_SHOWNORMAL);
                 executionSuccess = ((INT_PTR)h > 32);
             } 
@@ -731,35 +761,28 @@ int wmain() {
                     std::wstring sizeString = L" --window-size=" + std::to_wstring(targetW) + L"," + std::to_wstring(targetH);
 
                     if (windowedMode == 1) {
-                        // Clean standalone App Frame window (strips out tab bars/address inputs)
                         cmdArguments = L"--app=\"" + helpFile + L"\"" + sizeString;
                     } else {
-                        // Standard browser window tab wrapper layout
                         cmdArguments = L"--new-window" + sizeString + L" \"" + helpFile + L"\"";
                     }
                 } 
                 else if (browserChoice == L"firefox") {
                     exeTarget = L"firefox.exe";
-                    // Firefox relies on standard dimension sizing tags
                     cmdArguments = L"-new-window \"" + helpFile + L"\" -width " + std::to_wstring(targetW) + L" -height " + std::to_wstring(targetH);
                 } 
                 else {
-                    // Absolute path manual overwrite custom mapping fallback
                     exeTarget = browserType; 
                     cmdArguments = L" \"" + helpFile + L"\"";
                 }
 
-                // Fire process inside normal environment paths
                 executionSuccess = RunTool(exeTarget, cmdArguments, L"");
                 
-                // If direct working folder lookup fails, attempt explicit OS Shell environment resolution
                 if (!executionSuccess) {
                     HINSTANCE h = ShellExecuteW(nullptr, L"open", exeTarget.c_str(), cmdArguments.c_str(), nullptr, SW_SHOWNORMAL);
                     executionSuccess = ((INT_PTR)h > 32);
                 }
             }
 
-            // 3. Focus recovery check routing
             if (!executionSuccess) {
                 C(WARN_COLOR);
                 std::wcout << L"  [ERROR] Failed to map or launch target browser configuration.\n";
@@ -767,9 +790,7 @@ int wmain() {
                 std::wcout << L"  Press any key to return...";
                 _getwch();
             } else {
-                Sleep(350); // Small pause allowing the window context thread to initiate layout frames
-                
-                // Keep launcher navigation active by pulling keyboard focus back immediately
+                Sleep(350); 
                 HWND consoleWindow = GetConsoleWindow();
                 if (consoleWindow) {
                     SetForegroundWindow(consoleWindow);
@@ -780,9 +801,9 @@ int wmain() {
 
         std::wcout << L"\n[ERROR] Invalid selection.\nPress any key...";
         _getwch();
+        system("cls");
     }
 
-    // Release awake locks and return to OS standard low-power profile configurations
     SetThreadExecutionState(ES_CONTINUOUS);
 
     return 0;
