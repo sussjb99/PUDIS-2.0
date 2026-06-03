@@ -100,43 +100,6 @@ void OpenLogsFolderStyled(const std::wstring& folder)
         SetForegroundWindow(console);
 }
 
-void OpenHelpStyled(const std::wstring& helpFile, int consoleWidth)
-{
-    HINSTANCE h = ShellExecuteW(nullptr, L"open", helpFile.c_str(), nullptr, nullptr, SW_SHOWNORMAL);
-    if ((INT_PTR)h <= 32) {
-        MessageBoxW(nullptr, L"Failed to open Help file.", L"PUDIS", MB_ICONERROR);
-        return;
-    }
-
-    Sleep(350);
-
-    HWND hwnd = FindWindowW(L"Notepad", nullptr);
-    if (!hwnd) return;
-
-    RECT rc;
-    SystemParametersInfoW(SPI_GETWORKAREA, 0, &rc, 0);
-
-    int screenW = rc.right - rc.left;
-    int screenH = rc.bottom - rc.top;
-
-    int charWidth = 8;
-    int targetWidth = consoleWidth * charWidth;
-
-    if (targetWidth > screenW * 0.45)
-        targetWidth = (int)(screenW * 0.45);
-
-    int width  = targetWidth;
-    int height = (int)(screenH * 0.60);
-
-    int x = rc.right - width - 20;
-    int y = rc.top + 20;
-
-    MoveWindow(hwnd, x, y, width, height, TRUE);
-
-    HWND console = GetConsoleWindow();
-    if (console)
-        SetForegroundWindow(console);
-}
 
 std::wstring s2ws(const std::string& s) {
     if (s.empty()) return L"";
