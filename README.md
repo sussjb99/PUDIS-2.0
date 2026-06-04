@@ -33,6 +33,18 @@ To ensure safety and maintain full transparency:
 
 ---
 
+## Installation Steps
+
+- Download the latest PUDIS.zip file from the Releases section of this GitHub repository.
+- Copy the ZIP file to the root directory of your USB drive.
+- Unzip the PUDIS.zip file on the USB drive.
+- Open the newly created PUDIS directory.
+- Run PUDIS.exe to launch the suite.
+
+PUDIS will automatically detect the drive it is running from and ensure all operations are safely targeted to that device.
+
+---
+
 ## Support the Project
 
 PUDIS is an independent, open‑source project built to help people keep their data safe.  
