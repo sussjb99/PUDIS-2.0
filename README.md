@@ -6,18 +6,42 @@ PUDIS (Portable-USB-Drive-Integrity-Suite) is a maintenance and monitoring toolk
 - **File Integrity Testing (Bit‑Rot Detection)**
 - **Surface Analysis Testing (Performance & Stability Scans)**
 
-This suite is designed to work with USB flash drives and portable exteranal HDDs/SSD devices. 
+This suite is designed to work with USB flash drives and portable external HDDs/SSD devices.
 
 This software is designed to be small in size and should be installed and run directly from the external storage devices.
 
-This software was written in C++
+This software was written in C++.
 
 ---
 
 ## 🛡️ Security & Integrity
 
-- To retrieve health data from USB devices that support SMART health technology, requires elevated administrator permissions. However, Standard USB flash drives do not provide SMART data, so they do not require elevated permissions.
-- This applications permission requirements are controlled through the config.ini setting and can be adjusted to meet the specific requirements of your individual storaage devices.
+### ⚠️ Windows SmartScreen Warning (Important)
+
+Because PUDIS is an independent open‑source project and does **not yet have a commercial code‑signing certificate**, Windows may show the following message when you run `PUDIS.exe`:
+
+> **“Microsoft Defender SmartScreen prevented an unrecognized app from starting.”**  
+> **Publisher: Unknown**
+
+This is expected behavior for unsigned open‑source applications.
+
+To run the program safely:
+
+1. Click **More info**  
+2. Click **Run anyway**
+
+You may verify the authenticity of the executable using the SHA‑256 hashes listed in `manifest.md`.
+
+A trusted code‑signing certificate is planned once project funding allows, which will eliminate this warning in future releases.
+
+---
+
+### Permissions
+
+- Retrieving SMART health data from USB devices requires elevated administrator permissions.  
+  Standard USB flash drives do not provide SMART data and therefore do not require elevation.
+- Permission requirements are controlled through the `config.ini` file:
+
 
 ```
 config.ini
@@ -25,11 +49,11 @@ config.ini
 RequireAdmin=1
 ```
 
+### Integrity & Safety
 
-To ensure safety and maintain full transparency:
-- **Verified Hashes:** All binaries in this suite are documented in the [manifest.md](./manifest.md) file with their corresponding **SHA-256 hash**.
-- **Self-Signed:** As this is an independent project currently in the funding phase, files are self-signed. However, you can manually verify the integrity of any file using the hashes provided in the manifest.md file.
-- **Safety First:** This software is specifically designed to identify, target, and test removable storage devices. And as an added precaution, it is designed to  **never** perform stress testing on the system's main (C:) drive.
+- **Verified Hashes:** All binaries in this suite are documented in the [manifest.md](./manifest.md) file with their corresponding **SHA‑256 hash**.
+- **Self‑Signed:** Files are currently self‑signed due to the project’s funding phase. You can manually verify integrity using the provided hashes.
+- **Safety First:** PUDIS is designed to identify, target, and test only removable storage devices. It will **never** perform stress testing on the system’s main (C:) drive.
 
 ---
 
@@ -52,7 +76,7 @@ If this tool has helped you detect issues, avoid data loss, or simply feel more 
 
 [☕ Support on Ko‑fi](https://ko-fi.com/sussjb99)
 
-Every contribution helps fund testing hardware, new features, and the procurement of a professional code-signing certificate to reduce antivirus false positives.
+Every contribution helps fund testing hardware, new features, and the procurement of a professional code‑signing certificate to reduce antivirus false positives.
 
 ---
 
@@ -83,9 +107,9 @@ The suite maintains a cryptographic baseline of all files, including:
 - Timestamps
 - Hash values
 
-**It detects:** 
-- New, deleted, or modified files.
-- And any **Corrupted files (bit rot)** files whose hash value has changed even though the timestamp remains identical.
+**It detects:**  
+- New, deleted, or modified files  
+- **Corrupted files (bit rot):** files whose hash value has changed even though the timestamp remains identical  
 
 If PAR2 recovery data exists, the suite can automatically repair corrupted files. Recovered files are written back safely, and corrupted originals are preserved with a `.1` suffix.
 
@@ -93,14 +117,14 @@ If PAR2 recovery data exists, the suite can automatically repair corrupted files
 
 ## Tasks Overview
 
-1. **Scan for Bit Rot:** Compares all files against the stored baseline.
-2. **Re-Create Baseline:** Creates or updates the integrity baseline.
-3. **Re‑Generate Recovery Data:** Creates or updates PAR2 recovery files.
-4. **Calibrate:** Calibrates estimated times based on individual system performance metrics
-5. **Quick Surface Scan:** Fast stability and performance sampling.
-6. **Full Surface Scan:** Sequential read/write validation across all free space.
-7. **Generate Report** Useful for assessing health of device over time.
-8. **VIew Logs** Helpful for assessing technical issues.
+1. **Scan for Bit Rot:** Compares all files against the stored baseline.  
+2. **Re-Create Baseline:** Creates or updates the integrity baseline.  
+3. **Re‑Generate Recovery Data:** Creates or updates PAR2 recovery files.  
+4. **Calibrate:** Calibrates estimated times based on individual system performance metrics.  
+5. **Quick Surface Scan:** Fast stability and performance sampling.  
+6. **Full Surface Scan:** Sequential read/write validation across all free space.  
+7. **Generate Report:** Useful for assessing health of the device over time.  
+8. **View Logs:** Helpful for assessing technical issues.
 
 ---
 
@@ -108,19 +132,19 @@ If PAR2 recovery data exists, the suite can automatically repair corrupted files
 
 PUDIS automatically guides you through the required steps in the correct order.
 
-- **First‑time setup:** <br>
+- **First‑time setup:**  
   Calibrate Hardware → Re‑Create Baseline → Re‑Generate Recovery → Bit‑Rot Detection
 
-- **Routine integrity checks:** <br>
+- **Routine integrity checks:**  
   Run Bit‑Rot Detection to verify file integrity.
 
-- **Drive health maintenance:** <br>
+- **Drive health maintenance:**  
   Perform a Quick Surface Scan monthly and a Full Surface Scan every 6 months.
 
-- **After adding, removing, or modifying files:** <br>
+- **After adding, removing, or modifying files:**  
   Update the File Baseline and Re‑Generate Recovery Data.
-   
-**Note**  The software will automatically notify you if a required step has not yet been completed.
+
+**Note:** The software will automatically notify you if a required step has not yet been completed.
 
 ---
 
@@ -128,10 +152,11 @@ PUDIS automatically guides you through the required steps in the correct order.
 
 To build from source:
 1. Clone this repository.
-2. Ensure you have a C++ compiler similar to "Microsoft (R) C/C++ Optimizing Compiler Version 19.50.35730 for x64"
-3. Compile the source code using the compile.bat script
+2. Ensure you have a C++ compiler similar to  
+   `Microsoft (R) C/C++ Optimizing Compiler Version 19.50.35730 for x64`
+3. Compile the source code using the `compile.bat` script.
 4. Review `manifest.md` to ensure your compiled binaries match the expected project structure.
-5. Acquire the missing required 3rd party executables from their designated source locations.
+5. Acquire the missing required 3rd‑party executables from their designated source locations.
 
 ---
 
