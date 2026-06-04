@@ -33,7 +33,7 @@ To ensure safety and maintain full transparency:
 
 ---
 
-## Installation Steps
+## 🚀 Installation Steps
 
 - Download the latest PUDIS.zip file from the Releases section of this GitHub repository.
 - Copy the ZIP file to the root directory of your USB drive.
