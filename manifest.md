@@ -54,14 +54,13 @@ PUDIS/
 | --- | --- | --- |
 | ``Drive_Status.xml`` | Current drive identity, SMART data, calibration results | ``9AF2A0DE3476F25AF52F477160EC97D5698717AB604B0C0E802DABFE1F8ED94E`` |
 | ``Help.html`` | Offline help documentation for PUDIS | ``F3F238F38E0B98C67F6414593CC3199EC326F06E05FC712E52A991CD38D8E5F9`` |
-| ``PUDIS.exe`` | Main launcher and UI front‑end | ``70F41A85D66193ADEAC1FEFC91F7BA23E74AC09F6DA214105D4F3A12261C71A5`` |
+| ``PUDIS.exe`` | Main launcher and UI front‑end | ``01B84F0C79DDEA0641FF0CA12A576E8434B157E3ACEB7D89D957E3A71EDF1108`` |
 
 
 🔹 bin/  — Executables
 | File | Description | SHA‑256 |
 | --- | --- | --- |
 | ``baselineXML_estimate.exe`` | Estimates baseline creation time | ``A316DFD15783759FEFA00E678FD7954A25B63289BEBA51E481E4CA7DE3EC39F4`` |
-| ``calibrate_baselineXML_estimate.exe`` | Calibrates baseline estimation model | ``6703C1CC93D5A8EE898D816FA24E58BC4C20F56E66A1866C89AA7B92D8D0144D`` |
 | ``calibrate_hardware.exe`` | Measures hardware timing, latency, throughput | ``568A0ADB59C0038CD7EBE14718BAAAC1F40435739CBBD9B4E621552339464EE4`` |
 | ``calibrate_scan_estimate.exe`` | Calibrates scan‑time estimator | ``3BF6AA146165AD8BA86A4B738A50DE203E5BAE59BEF5EF8BBD3F95FAD332D598`` |
 | ``corruptor.exe`` | Test tool to intentionally corrupt files for validation | ``3A401DDDF918D5D820A88F76AC202BF186A869415A16B1801D39AF592C861D01`` |
@@ -79,12 +78,12 @@ PUDIS/
 | ``recovery_estimate.exe`` | Estimates recovery time | ``979046146C40C9572F48B16B06D2E34AF928B8F5EC14AC8DB9F20F410BB3B474`` |
 | ``scantime_estimate.exe`` | Estimates scan duration | ``513B8E8C20B4B7DAB20D365FEF1888D5DB43CCD6F36DFB5472B18A8BC0512595`` |
 | ``smartctl.exe`` | SMART data extraction tool | ``B5DB94E5082C042BE44994B7A4FA8F7B5C8E713B2AB1C9A560D8F7A7995EA27D`` |
-| ``surface_scan.exe`` | Performs surface scan on the drive | ``4EA9D6AC351956995A5CA728C7CFBA4BDD5C35821C69053E6D87C405C9CA2478`` |
+| ``surface_scan.exe`` | Performs surface scan on the drive | ``491590E3A4C30E7E3062621EAB157F98B1BA7626B4A93315FD6DB6C32E73F855`` |
 
 🔹 config/ — Configuration Files
 | File | Description | SHA‑256 |
 | --- | --- | --- |
-| ``config.ini`` | Main configuration file controlling all PUDIS modules | ``6E653C687B7E66CBDA6FC27B8B1282DE5E626552908D3008453D483E7ACD9DA5`` |
+| ``config.ini`` | Main configuration file controlling all PUDIS modules | ``DE574CA095658CBA2AD4533CBF0B3D83188BA1624BC32895E32600AB98C1C0AB`` |
 | ``drivedb.txt`` | Drive database for SMART attribute interpretation | ``612FC34980C0DA7D7163473A12C01095B579F85388A7CFA3CBADAC6C0D914B83`` |
 
 🔹 data/ — Data Repository
