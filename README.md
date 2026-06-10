@@ -72,11 +72,11 @@ PUDIS will automatically detect the drive it is running from and ensure all oper
 ## ❤️ Support the Project
 
 PUDIS is an independent, open‑source project built to help people keep their data safe.  
-If this tool has helped you detect issues, avoid data loss, or simply feel more confident about your drives, you can support ongoing development here:
+If this tool has helped you detect issues, avoid data loss, or simply feel more confident about your drives, you can leave a tip to support ongoing development:
 
-[☕ Support on Ko‑fi](https://ko-fi.com/sussjb99)
+[☕ Tip the Developer on Ko‑fi](https://ko-fi.com/sussjb99)
 
-Every contribution helps fund testing hardware, new features, and the procurement of a professional code‑signing certificate to reduce antivirus false positives.
+Your support helps fund testing hardware, new features, and a professional code‑signing certificate to reduce antivirus false positives.
 
 ---
 
