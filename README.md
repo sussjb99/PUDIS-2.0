@@ -57,15 +57,35 @@ RequireAdmin=1
 
 ---
 
-## 🚀 Installation Steps
+## 🚀 Installation Methods
 
-- Download the latest PUDIS.zip file from the Releases section of this GitHub repository.
-- Copy the ZIP file to the root directory of your USB drive.
-- Unzip the PUDIS.zip file on the USB drive.
-- Open the newly created PUDIS directory.
-- Run PUDIS.exe to launch the suite.
+### **Automated Installation (Recommended)**
+Use this method if you want a guided installer that ensures PUDIS is placed on a USB storage device only.
 
-PUDIS will automatically detect the drive it is running from and ensure all operations are safely targeted to that device.
+1. **Download** `PUDIS-2.0-Setup.exe` from the Releases page.  
+2. **Run** the installer.  
+3. **Accept** the License Agreement.  
+4. **Select** the correct **USB storage device letter** when prompted.  
+5. **Click Install** to complete the setup.
+
+> **Note:** The installer is designed to prevent installation onto internal system drives (e.g., `C:\`).  
+> Only removable USB storage devices will be accepted.
+
+---
+
+### **ZIP File Installation (Manual Method)**
+
+1. **Download** the latest `PUDIS.zip` from the Releases page.  
+2. **Copy** the ZIP file to the **root directory** of your USB drive.  
+3. **Extract** the ZIP file on the USB drive.  
+4. **Open** the newly created `PUDIS` folder.  
+5. **Run** `PUDIS.exe`.
+
+---
+
+### **Drive Safety**
+PUDIS automatically detects the drive it is running from and ensures all operations are safely targeted to that device.
+
 
 ---
 
